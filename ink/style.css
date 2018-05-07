@@ -1,0 +1,50 @@
+body {
+    font-family: sans-serif;
+    font-weight: lighter;
+}
+
+h1 {
+    text-align: center;
+    font-weight: lighter;
+}
+ .byline {
+    font-size: 130%
+}
+.container {
+    display: block;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.container > p {
+	font-size: 100%;
+	opacity: 1.0;
+	font-style: italic
+}
+.container > p a {
+	color: gray;
+}
+
+p, a {
+    color: gray;
+    line-height: 1.7em;
+    font-size: 13pt;
+}
+
+p {
+    opacity: 0.0;
+    transition: opacity 1.0s;
+}
+
+p.show {
+    opacity: 1.0;
+}
+
+p.choice {
+    text-align: center;
+}
+
+a:hover {
+    color: black;
+}
