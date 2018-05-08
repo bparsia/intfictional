@@ -7,16 +7,31 @@ inklecate = './inklecate_mac/inklecate'
 p = Path('.')
 template = (p / 'cattemplate.html').read_text()
 
+story_prefix = 'var storyContent ='
 index = ''
-for inkfile in p.glob('./*.ink'):
-	name = inputink.stem
-	version = name.split('catdecisions') # Yes, I hard code.
+
+for inkpath in p.glob('./*.ink'):
+	name = inkpath.stem
+	version = name.split('catdecisions')[1] # Yes, I hard code.
+	print('Building', name)
+	inkfile = inkpath.name
+	inkpathtgt = p / 'cats' / inkfile
+	inkpathtgt.write_bytes(inkpath.read_bytes())
+	
+
 	storyfile = name + '.js'
 	subprocess.run([inklecate, '-o', storyfile, inkfile ])
+	storypathsrc = p / storyfile
+	storypathtgt = p / 'cats' / storyfile
+	story = storypathsrc.read_bytes()
+	storypathsrc.unlink()
+	story = story.decode('utf-8-sig')
+	storypathtgt.write_text(story_prefix + story)
 	notes = ''
 	htmlfile = name + '.html'
-	index += '<li><a href=%s>%s</a></li>\n' % (htmlfile, name)
-	(p / htmlfile).write_text(template % locals)
+	#stuff = {'name': name, 'version': version, 'inkfile': inkfile,  'storyfile':storyfile}
+	index += '<li><a href=%s>%s</a></li>\n' % ('cats/'+htmlfile, name)
+	(p / 'cats' / htmlfile).write_text(template % locals())
 	
 
 indextext = """<html><head><title>A Series of Ink Examples</title></head>
@@ -25,5 +40,6 @@ indextext = """<html><head><title>A Series of Ink Examples</title></head>
 </ol>
 </body>
 </html>""" % index
-
-(p / 'index.html').write_text(indextext)
+print('Building index')
+(p /  'index.html').write_text(indextext)
+print('Done!')
