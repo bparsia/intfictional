@@ -12,6 +12,9 @@ start text!
 -> start
 
 === start
+You stand in an open doorway.
+Bright light dazzles you. A breeze ruffles your fur and whiskers.
+Behind you, the room is warm and its scent is familiar.
 * [I wish to go out.]
 ->go_out
 * [I wish to turn away from the bright and unfamiliar.]
