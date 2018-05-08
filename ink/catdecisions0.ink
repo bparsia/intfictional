@@ -6,6 +6,8 @@
 //    Display text.
 //    Choices (Indicated by the leading asterisk)
 //    Suppressing choice text (the brackets)
+// The original idea for this story stemmed from wanting a simple path with a few obvious options. The subject was inspired by the idea of choices: a cat on the threshold of a house represents uncertainty and non-permanence of choices. In interactive fiction, the reader usually wants to pursue all possible paths, just like a cat who cannot commit to staying in or staying out. 
+// The tale, of course, ends in sleep, an obvious metaphor for the end of all stories...
 You stand in an open doorway.
 Bright light dazzles you. A breeze ruffles your fur and whiskers.
 Behind you, the room is warm and its scent is familiar.
